@@ -1,8 +1,7 @@
 # Books For Kooks
-#### Video Demo: https://youtu.be/lgNWT8NyE98
 #### Description:
 
-My final project for cs50 is called Books For Kooks. This is a web application created using Flask,SQL,HTML,CSS and Python where a user can register an account and then find information about a book they wish to read and also find reviews about a book from other people who have already read the book. The web application also allows you to create a personalized bookshelf where you add books that you want to buy and read, are planning to read or one's that you have already read. Users are required to sign in and create an account before using the web application ensuring safety and privacy. The app uses SQL to store user accounts, books, and reviews, ensuring data is saved and organized. It allows readers to organize their reading, discover new books, and learn from community reviews, making the reading experience more enjoyable and social.
+Books For Kooks is a web application created using Flask,SQL,HTML,CSS and Python where a user can register an account and then find information about a book they wish to read and also find reviews about a book from other people who have already read the book. The web application also allows you to create a personalized bookshelf where you add books that you want to buy and read, are planning to read or one's that you have already read. Users are required to sign in and create an account before using the web application ensuring safety and privacy. The app uses SQL to store user accounts, books, and reviews, ensuring data is saved and organized. It allows readers to organize their reading, discover new books, and learn from community reviews, making the reading experience more enjoyable and social.
 
 #### TEMPLATES:
 layout.html: This template has the basic layout of my website. It contains the title at the top as well as a navbar for user's to navigate throughout the website.
