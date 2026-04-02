@@ -25,7 +25,7 @@ def login():
         if not username:
             return ("enter username")
         if not password:
-            return ("enter password")
+            return ("enter current password")
 
         user=db.execute("SELECT * FROM users WHERE username = ? AND password = ?",username,password)
         if not user:
