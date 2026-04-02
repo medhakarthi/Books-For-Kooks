@@ -46,7 +46,3 @@ This is the main file which uses flask to connect SQL, Python, CSS and HTML toge
 #### DESIGN CHOICES:
 While creating the application Books For Kooks, I did face some design choices where I had trouble picking which path to take. For example, I didn't know whether I wanted to have user's to be able to add to the bookshelf on the same page as the bookshelf. Some pros to this would be that they would be able to see what book's they already have in their shelf to ensure that they don't double add the same one. However, some cons to this were that there would be too much on one page which can become overstimulating for the user. In the end, I decided to make them on seperate pages.
 
-
-#### ABOUT ME:
-Hi my name is Medha and I am currently 18 years old. I am the owner of Books For Kooks. One of my strongest passions is coding and I have been coding for the past few years. I hope to find a career as a software engineer!
-# Books-For-Kooks
