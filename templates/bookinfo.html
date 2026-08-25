@@ -1,0 +1,16 @@
+{%extends "layout.html"%}
+
+{%block body%}
+
+<h1> Find Out What The Book You Want is About! </h1>
+<form action="/bookinfo" method="post">
+    <input autocomplete="off" autofocus="on" required name="title" placeholder="Title Of Book" type="text">
+    <p></p>
+    <p></p>
+    <input autocomplete="off" autofocus="on" required name="author" placeholder="Author Name" type="text">
+    <p></p>
+    <p></p>
+    <button class="btn btn-primary" type="submit"> Search Info </button>
+</form>
+
+{%endblock%}

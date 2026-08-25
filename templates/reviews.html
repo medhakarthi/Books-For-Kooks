@@ -1,0 +1,12 @@
+{%extends "layout.html"%}
+
+{%block body%}
+
+<h1> Find Out Customer Reviews For A Book! </h1>
+<form action="/reviews" method="post">
+    <input autocomplete="off" autofocus="on" required name="title" placeholder="Title Of Book" type="text">
+    <input autocomplete="off" autofocus="on" required name="author" placeholder="Author Name" type="text">
+    <button class="btn btn-primary" type="submit"> Find Reviews </button>
+</form>
+
+{%endblock%}

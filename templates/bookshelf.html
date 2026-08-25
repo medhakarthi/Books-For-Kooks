@@ -1,0 +1,26 @@
+{%extends "layout.html"%}
+
+{%block body%}
+
+<h1 style="text-align: center;" > BookShelf </h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+        <th> Title </th>
+        <th> Author </th>
+        <th> Status </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {%for i in rows%}
+        <tr>
+            <td> {{i.title}}</td>
+            <td> {{i.author}}</td>
+            <td> {{i.status}}</td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+
+{%endblock%}

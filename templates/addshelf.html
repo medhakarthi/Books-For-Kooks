@@ -1,0 +1,20 @@
+{%extends "layout.html"%}
+
+{%block body%}
+
+<h1> Add Books To Your Online BookShelf </h1>
+<form action="/addshelf" method="post">
+    <input autocomplete="off" autofocus="on" name="title" placeholder="Title" type="text">
+
+    <input autocomplete="off" autofocus="on" name="author" placeholder="Author" type="text">
+
+    <select required name="read">
+        <option disabled selected value=""> Status </option>
+        <option value="Read"> Read </option>
+        <option value="Will Read"> Will Read </option>
+        <option value="To Buy/Read"> To Buy/Read </option>
+    </select>
+    <button class="btn btn-primary" type="submit"> Add Book </button>
+</form>
+
+{%endblock%}

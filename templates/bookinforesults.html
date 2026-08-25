@@ -1,0 +1,23 @@
+{%extends "layout.html"%}
+
+{%block body%}
+
+<h1> Description </h1>
+<table class="table table-hover">
+    <thead>
+        <tr>
+        <th> Title </th>
+        <th> Description </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {%for i in rows%}
+        <tr>
+            <td> {{i.Title}} </td>
+            <td> {{i.description}} </td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+{%endblock%}

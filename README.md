@@ -1,7 +1,115 @@
 # Books For Kooks
 #### Description:
 
-Books For Kooks is a web application created using Flask,SQL,HTML,CSS and Python where a user can register an account and then find information about a book they wish to read and also find reviews about a book from other people who have already read the book. The web application also allows you to create a personalized bookshelf where you add books that you want to buy and read, are planning to read or one's that you have already read. Users are required to sign in and create an account before using the web application ensuring safety and privacy. The app uses SQL to store user accounts, books, and reviews, ensuring data is saved and organized. It allows readers to organize their reading, discover new books, and learn from community reviews, making the reading experience more enjoyable and social.
+Books For Kooks is a web application created using Flask, SQL, SQLite, HTML, CSS, and Python where a user can register an account and then find information about a book they wish to read and also find reviews about a book from other people who have already read the book. The web application also allows you to create a personalized bookshelf where you add books that you want to buy and read, are planning to read or ones that you have already read. Users are required to sign in and create an account before using the web application ensuring safety and privacy. The app uses SQLite to store user accounts, books, and reviews, ensuring data is saved and organized. It allows readers to organize their reading, discover new books, and learn from community reviews, making the reading experience more enjoyable and social.
+
+**Technologies:** Python, Flask, SQL, SQLite, HTML, CSS
+
+The generated SQLite database and source datasets are intentionally excluded from this repository because of their large file sizes. The database can be reconstructed locally using the included setup and import scripts.
+
+## Setup / How to Run
+
+The Amazon book dataset and the generated `books.db` file (about 3.6 GB) are **not** included on GitHub on purpose. After cloning, you will download the dataset and rebuild the database locally.
+
+1. Clone the repository.
+
+2. Create and activate a Python virtual environment:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+On Windows, activate with `venv\Scripts\activate`.
+
+3. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Download the [Amazon Books Reviews](https://www.kaggle.com/datasets/mohamedbakhet/amazon-books-reviews) dataset from Kaggle.
+
+5. Place these two files in the project root with **exactly** these filenames:
+
+```text
+books_data.csv
+Books_rating.csv
+```
+
+6. Create the local SQLite database and its required tables:
+
+```bash
+python3 create_database.py
+```
+
+7. Import the book and ratings data:
+
+```bash
+python3 import_data.py
+```
+
+This imports:
+
+```text
+books_data.csv → bookdetails
+Books_rating.csv → bookratings
+```
+
+The ratings CSV is several gigabytes, so this step can take a little while and will create a local `books.db` of about 3.6 GB.
+
+8. Start Flask:
+
+```bash
+export FLASK_APP=app.py
+flask run
+```
+
+9. Open [http://127.0.0.1:5000](http://127.0.0.1:5000)
+
+There are no pre-made accounts. Use **Sign Up** to create a user, then log in.
+
+## Database Setup
+
+Books For Kooks uses a local SQLite database named `books.db`. Flask does not read the CSV files while the app is running. Instead, you build `books.db` once, and `app.py` queries that database.
+
+```text
+books_data.csv ──────→ bookdetails ──┐
+                                     │
+Books_rating.csv ────→ bookratings ──┤
+                                     ├──→ books.db → Flask
+User registration ──→ users ─────────┤
+                                     │
+Saved books ─────────→ bookshelf ────┘
+```
+
+- `create_database.py` creates `books.db` and the four tables the app expects.
+- `import_data.py` loads the Amazon book catalog into `bookdetails` and Amazon customer reviews into `bookratings`.
+- `users` and `bookshelf` start empty. New accounts and saved books are created as people use the app.
+
+`books.db` contains four tables. `bookdetails` and `bookratings` come from the Amazon Books Reviews CSV files, `books_data.csv` and `Books_rating.csv`, which contain information about books such as customer reviews, summaries, authors, etc. `users` stores each user's id, username, and password. `bookshelf` stores each user's saved books with the title, author, and status of whether the user read the book or wants to read the book.
+
+## Project Structure
+
+```text
+Books-For-Kooks/
+├── app.py
+├── create_database.py
+├── import_data.py
+├── requirements.txt
+├── templates/
+├── static/
+└── README.md
+```
+
+These files are downloaded or generated locally, so they are not included on GitHub:
+
+```text
+books.db
+books_data.csv
+Books_rating.csv
+venv/
+```
 
 #### TEMPLATES:
 layout.html: This template has the basic layout of my website. It contains the title at the top as well as a navbar for user's to navigate throughout the website.
@@ -20,9 +128,6 @@ signup.html: This template contains a form where a user can sign up for an accou
 
 #### STATIC:
 The static folder contains two images, one for the logo of the website and another for the welcome page of the website.
-
-#### DATABASE:
-books.db contains four tables. bookdetails and bookratings are tables from the Amazon Reviews csv files, book_data.csv and Books_rating.csv, which contains information about books such as customer reviews, summaries, authors, etc. users is a table that contains the if for each user as well as their username and password. the bookshelf database contains each user's bookshelf with the title and author of each book as well as the status of whether the user read the book or wants to read the book.
 
 #### APP.PY:
 This is the main file which uses flask to connect SQL, Python, CSS and HTML together. It contains 7 different routes.
@@ -45,4 +150,3 @@ This is the main file which uses flask to connect SQL, Python, CSS and HTML toge
 
 #### DESIGN CHOICES:
 While creating the application Books For Kooks, I did face some design choices where I had trouble picking which path to take. For example, I didn't know whether I wanted to have user's to be able to add to the bookshelf on the same page as the bookshelf. Some pros to this would be that they would be able to see what book's they already have in their shelf to ensure that they don't double add the same one. However, some cons to this were that there would be too much on one page which can become overstimulating for the user. In the end, I decided to make them on seperate pages.
-

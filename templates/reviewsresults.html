@@ -1,0 +1,26 @@
+{%extends "layout.html"%}
+
+{%block body%}
+
+<h1> Reviews </h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+        <th> Profile Name </th>
+        <th> Score </th>
+        <th> Text</th>
+        </tr>
+    </thead>
+    <hr style="border-color: blue; border-width: 2px; border-style: dotted;">
+
+    <tbody>
+        {%for i in rows%}
+        <tr>
+            <td> {{  i["profileName"]  }} </td>
+            <td> {{ i["review/score"] }} </td>
+            <td style="padding: 10px;"> {{  i["review/text"]  }} </td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+{%endblock%}
